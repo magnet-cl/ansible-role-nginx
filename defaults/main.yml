@@ -73,6 +73,7 @@ nginx_vhosts: []
 #   extra_parameters: "" # Can be used to add extra config blocks (multiline).
 #   template: "" # Can be used to override the `nginx_vhost_template` per host.
 #   state: "absent" # To remove the vhost configuration.
+#   overwrite: no # Don't overwrite vhost config if it already exists.
 
 nginx_upstreams: []
 # - name: myapp1
