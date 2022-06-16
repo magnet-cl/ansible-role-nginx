@@ -1,6 +1,6 @@
 # Ansible Role: Nginx
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-nginx.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-nginx)
+[![CI](https://github.com/geerlingguy/ansible-role-nginx/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-nginx/actions?query=workflow%3ACI)
 
 **Note:** Please consider using the official [NGINX Ansible role](https://github.com/nginxinc/ansible-role-nginx) from NGINX, Inc.
 
@@ -15,6 +15,11 @@ None.
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
+
+
+    nginx_listen_ipv6: true
+
+Whether or not to listen on IPv6 (applied to all vhosts managed by this role).
 
     nginx_vhosts: []
 
@@ -77,7 +82,7 @@ The user under which Nginx will run. Defaults to `nginx` for RedHat, `www-data` 
 `nginx_worker_processes` should be set to the number of cores present on your machine (if the default is incorrect, find this number with `grep processor /proc/cpuinfo | wc -l`). `nginx_worker_connections` is the number of connections per process. Set this higher to handle more simultaneous connections (and remember that a connection will be used for as long as the keepalive timeout duration for every client!). You can set `nginx_multi_accept` to `on` if you want Nginx to accept all connections immediately.
 
     nginx_error_log: "/var/log/nginx/error.log warn"
-    nginx_access_log: "/var/log/nginx/access.log main buffer=16k"
+    nginx_access_log: "/var/log/nginx/access.log main buffer=16k flush=2m"
 
 Configuration of the default error and access logs. Set to `off` to disable a log entirely.
 
